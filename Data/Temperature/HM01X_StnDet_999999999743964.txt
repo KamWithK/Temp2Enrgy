@@ -1,0 +1,11 @@
+
+*  Percentage complete between first and last records assumes 48 observation per day.
+   Some days there may be more then 48 reports if there have been significant changes in 
+   the weather, so the percentage completeness is an estimate. 
+
+st,086338,86  ,MELBOURNE (OLYMPIC PARK)                ,05/2013,       ,-37.8255, 144.9816,SURVEY         ,VIC,   7.5,   7.5,95936,2013,2020,103,  0,100,  0,  0,  0,#
+st,086071,86  ,MELBOURNE REGIONAL OFFICE               ,01/1908,01/2015,-37.8075, 144.9700,GPS            ,VIC,  31.2,  32.2,94868,2000,2015, 99,  0,100,  0,  0,  0,#
+st,023090,23A ,ADELAIDE (KENT TOWN)                    ,01/1977,       ,-34.9211, 138.6216,GPS            ,SA ,  48.0,  51.0,94675,2000,2020,101,  0,100,  0,  0,  0,#
+st,066062,66  ,SYDNEY (OBSERVATORY HILL)               ,01/1858,       ,-33.8607, 151.2050,GPS            ,NSW,  39.0,  40.2,94768,2000,2020, 99,  0,100,  0,  0,  0,#
+st,094029,94  ,HOBART (ELLERSLIE ROAD)                 ,01/1882,       ,-42.8897, 147.3278,GPS            ,TAS,  50.5,  51.4,94970,2000,2020,110,  0,100,  0,  0,  0,#
+st,040913,40  ,BRISBANE                                ,12/1999,       ,-27.4808, 153.0389,GPS            ,QLD,   8.1,   8.3,94576,2000,2020, 99,  0,100,  0,  0,  0,#

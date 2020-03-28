@@ -1,0 +1,420 @@
+NOTES FOR HM01X_P COMPLETED ON 20/01/2020
+____________________________________________________________________________________________
+
+
+All observations between 2000010100:00  and 2020012023:59  Local standard time.
+
+
+____________________________________________________________________________________________
+
+
+
+DATA FILE DETAILS
+_____________________
+
+
+Byte Location , Byte Size  , Explanation
+----------------------------------------
+
+
+1-2           ,2           , Record identifier - hm
+4-9           ,6           , Bureau of Meteorology Station Number.
+11-26         ,16          , Year Month Day Hours Minutes in YYYY,MM,DD,HH24,MI format in Local time
+28-43         ,16          , Year Month Day Hours Minutes in YYYY,MM,DD,HH24,MI format in Local standard time
+45-50         ,6           , Precipitation since 9am local time in mm
+52            ,1           , Quality of precipitation since 9am local time
+54-58         ,5           , Air Temperature in degrees C
+60            ,1           , Quality of Air Temperature
+62-66         ,5           , Wet bulb temperature in degrees C
+68            ,1           , Quality of Wet Bulb Temperature
+70-74         ,5           , Dew point temperature in degrees C
+76            ,1           , Quality of Dew point Temperature
+78-80         ,3           , Relative humidity in percentage %
+82            ,1           , Quality of Relative humidity
+84-88         ,5           , Wind speed in km/h
+90            ,1           , Quality of Wind speed
+92-94         ,3           , Wind direction in degrees
+96            ,1           , Quality of Wind direction
+98-102        ,5           , Speed of maximum wind gust in last 10 minutes in km/h
+104           ,1           , Quality of speed of maximum wind gust in last 10 minutes
+106-111       ,6           , Mean sea level pressure in hPa
+113           ,1           , Quality of mean sea level pressure
+115-120       ,6           , Station level pressure in hPa
+122           ,1           , Quality of station level pressure
+124-125       ,2           , Automatic Weather Station Flag
+127           ,1           , # symbol, end of record indicator.
+
+
+
+
+
+
+
+
+PARAMETER NOTES
+---------------
+
+
+
+
+PRECIPITATION
+
+Precipitation since 9 am is the cumulative precipitation recorded since 9 am local time. The rainfall total is reset to zero daily at 9 am local time.
+
+Precipitation is measured using a "Tipping Bucket Rain Gauge" (TBRG). Most TBRGs report rainfall to 0.2 mm, but some report to 0.1 or 0.5 mm.
+
+Rainfall includes all forms of water particles, whether liquid (for example, rain or drizzle) or solid (hail or snow), that fall from clouds and 
+reach the ground at the point of observation. Note that rainfall totals may be under-reported during snowy and/or windy conditions. 
+For more information please refer to: http://www.bom.gov.au/climate/how/observations/rain-measure.shtml
+
+
+
+
+TEMPERATURE
+
+Temperature measurements are recorded in a Stevenson Screen which allows for good air flow across the thermometers, and prevents heating from 
+direct sunlight. The height of the thermometers is approximately 1.2 m above the ground. For more information please refer to: 
+http://www.bom.gov.au/climate/cdo/about/airtemp-measure.shtml
+
+Most air temperature measurements made at an Automatic Weather Station are instantaneous values (1-second samples). A small proportion of our 
+Automatic Weather Stations report a 1-minute average for air temperature. The difference, if any, between these reporting periods is insignificant.
+
+
+
+
+WET-BULB TEMPERATURE
+
+Wet-bulb temperature is usually calculated from temperature, dew point temperature (calculated from relative humidity) and pressure, or measured 
+using a standard mercury-in-glass thermometer with the thermometer bulb wrapped in muslin which is kept wet. The evaporation of water from the 
+thermometer has a cooling effect, so the temperature indicated by the wet bulb thermometer is less than the temperature indicated by a dry-bulb 
+(normal, unmodified) thermometer.
+
+
+
+
+DEW POINT TEMPERATURE
+
+Dew point Temperature is the temperature to which the air must be cooled (at a constant pressure and water vapour content), in order for condensation 
+of water vapour to occur. It therefore directly indicates the moisture content of the air; a low value indicates dry air. The closer the dew point is 
+to the air temperature, the moister the air and the higher the relative humidity. Note that dew point temperature is a calculated value, derived from 
+measurements of temperature and relative humidity.
+
+Most dew point temperature measurements made at an Automatic Weather Station are instantaneous values (1-second samples). A small proportion of our 
+Automatic Weather Stations report a 1-minute average for dew point temperature. The difference, if any, between these reporting periods is insignificant.
+
+
+
+
+RELATIVE HUMIDITY
+
+Relative humidity (RH) represents the moisture content of the air. It is the ratio of the amount of moisture actually in the air to the maximum amount of 
+moisture which the air could hold at the same temperature. RH is obtained either from measurements by an electronic relative humidity sensor or derived 
+via complex equations using air temperature and dew point temperature. There can be slight differences between RH values measured directly by a relative 
+humidity sensor and those derived using equations. Typically these differences are less than 1%. 
+
+Most Automatic Weather Stations report observations of RH as instantaneous values (1-second samples). A small proportion of Automatic Weather Stations 
+report a 1-minute average RH. The difference, if any, between these reporting periods is insignificant.
+
+The uncertainty associated with RH data increases at the extremes. That is, in very dry air as RH approaches 0%, and in very humid conditions as RH 
+approaches 100%. There are some occasions when reported RH values may slightly exceed 100%. In these instances you should consider the value to be 100%.
+
+The following formulas have been used:
+
+Relative Humidity = Vapour pressure / Saturated vapour pressure * 100
+
+Vapour pressure = exp (1.8096 + (17.269425 * Dew_Point)/(237.3 + Dew_Point))
+
+Saturated Vapour pressure = exp (1.8096 + (17.269425 * Air_Temperature)/(237.3 + Air_Temperature))
+
+
+
+
+WIND
+
+Wind speed and direction are typically an average over the 10 minutes prior to the observation time. Measurements are made using an automatic anemometer, 
+usually at a height of approximately 10 metres above the surface. When a significant wind change occurs during the 10 minute period prior to an observation, 
+additional special observations may be reported by the AWS. In these cases, the wind data is not always averaged over the standard 10 minute averaging period.
+
+Wind speed is usually measured by the anemometer in whole knots, but archived in SI units of m/s to 1 decimal point (0.1 m/s). 1m/s = 1.94kn = 3.6km/h approximately.
+
+Wind gusts reported are the highest 3 second mean wind speed (sampled every second) over the last 10 minutes. When a significant wind change occurs during 
+the 10 minute period prior to an observation, additional special observations may be reported by the AWS. In these cases, the wind gust data does not always 
+apply to the standard 10 minute period.
+
+Wind direction can be output as either degrees (true) or points of the compass (8 or 16). If degrees are output, then values are rounded to the nearest 
+10 degrees and directions ending in 5 are rounded up (e.g. 105 degrees rounds to 110 degrees). When the wind speed is zero the wind direction is also zero 
+(i.e. calm conditions).
+
+The Bureau's wind measurements are designed to satisfy weather and climate monitoring needs.
+
+The Bureau's current uncertainty tolerances for automatic wind speed measurements are +/- 5% of the wind speed for wind speeds greater than or equal to 10 m/s and 
++/- 0.3 m/s for wind speeds below 10 m/s.
+
+As equipment is modernised at observing stations, the Bureau's continuous improvement requirement is to ensure that no change in equipment or algorithm 
+results in wind speed measurements with a higher uncertainty, and where possible decreases uncertainty.
+
+In 2010, with the incorporation of new monitoring equipment with improved algorithms to convert raw outputs into wind speed, a step change downwards in the 
+wind speed measurements has occurred of the order of 0.5 m/s at some stations. Investigations have not lead to any evidence that the wind speed measurements 
+using the Telvent Automatic Weather Station are outside the Bureau's uncertainty tolerance. We are confident that the new measurements provide a better estimate 
+of the true wind speed, and may ultimately result in revised and improved uncertainty tolerances for Bureau wind speed measurements of both the past and future. 
+We are now investigating ways to apply this knowledge to the past wind record.
+
+
+
+
+PRESENT WEATHER
+
+The code meanings below apply to the manual Present Weather observations: 
+
+0     Not observed or not observable
+1-3   Fine
+4     Smoke
+5     Haze
+6-7   Dust
+8     Dust whirls
+9     Dust storm
+10    Mist
+11,41 Fog patches
+12    Shallow fog
+13    Lightning
+14    Distant/nearby virga
+15-16 Distant precipitation
+17    Thunder
+18    Squall
+19    Funnel cloud
+20    Recent drizzle
+21    Recent rain
+22,26 Recent snow
+23    Recent rain and snow
+24    Recent precipitation
+25    Recent shower
+27    Recent hail
+28    Recent fog
+29    Recent thunderstorm
+30-32 Dust storm
+33-35 Severe dust storm
+36-37 Drifting snow
+38-39 Blowing snow
+40    Distant fog
+42-49 Fog
+50-55 Drizzle
+56-57 Freezing drizzle
+58-59 Drizzle
+60-65 Rain
+66-67 Freezing rain
+68-69 Sleet
+70-75 Snow
+76    Ice prisms
+77    Snow grains
+78    Starlike crystals
+79    Ice pellets
+80-81 Shower
+82    Violent shower
+83-84 Sleet
+85-86 Snow shower
+87-88 Soft hail shower
+89-90 Hail shower
+91-95 Thunderstorm
+96,99 Thunderstorm and hail
+97    Heavy thunderstorm
+98    Thunderstorm and dust
+
+
+
+
+PRESSURE
+
+Station level pressure is the pressure measured at the weather station.
+
+Mean sea level pressure (MSLP) is the station level pressure converted to an equivalent pressure 
+at mean sea level. The use of MSLP allows for comparison of stations at different elevations. 
+The MSLP is calculated by applying a coefficient to the station level pressure. The Bureau uses a 
+table of coefficients that is localised to each weather station and for each month of the year. 
+The coefficients are created by considering the height and surface temperature and humidity 
+climatology at each weather station.
+
+QNH pressure is obtained by taking the station level pressure and reducing it to mean sea level by 
+assuming the International Standard Atmosphere (ISA) conditions between the station and sea level. 
+QNH pressure is used by pilots to set the altimeter of their aircraft. QNH pressure is closely related 
+to MSLP at low elevations but can vary significantly from MSLP at high elevations.
+
+Most Automatic Weather Stations report observations of pressure as instantaneous values (1-second samples). 
+A small proportion of our Automatic Weather Stations report a 1-minute average for pressure. The difference, 
+if any, between these reporting periods is insignificant. 
+
+
+
+
+AWS (AUTOMATIC WEATHER STATION) FLAG
+
+0 Manned
+1 Automatic
+2 Hybrid
+
+Indicates whether the observations are completely automatic or whether an observer is present, or a hybrid. 
+In a couple of situations some differences occur due to the observation method. For example, Automatic Weather Station 
+algorithms have had some difficulties in responding quickly to significant wind changes. Depending on the direction 
+change the AWS may take several minutes to register the change and output a special weather report.
+
+
+
+
+GENERAL NOTES
+-------------
+
+
+
+
+TIME
+
+UTC - Coordinated Universal Time (sometimes called Greenwich Mean Time or GMT).
+
+Local Standard Time - The globe is divided into Standard time zones and Local Standard Time is the time specified for each zone.
+This is usually done in terms of hours ahead or behind UTC.
+
+Local Time - the time according to the local clock. Normally this is the same as Local Standard Time, but during Daylight Saving in 
+eastern states an hour is added to the local clock, making Local Time an hour ahead of Local Standard Time.
+
+When Daylight Saving begins the clock moves forward an hour at 2:00 am to 3:00 am. When this happens half hourly observations will 
+occur at 01:00, 01:30, 03:00, 03:30.
+
+When Daylight Saving ends the clock moves back an hour at 3:00 am to 2:00 am. When this happens half hourly observations will occur at 
+02:00, 02:30, 02:00, 02:30, 03:00.
+
+Care needs to be taken if analysing data against Local Time due to Daylight Saving, as a 9 am observation during Daylight Saving is 
+really an 8 am observation in Local Standard Time. For elements such as temperature the difference can be significant, as the temperature 
+at this time of day is often rising quickly.
+
+Daylight Saving has been used in many Australian states since 1973, and on limited occasions prior to this. The changeovers generally 
+occur in October and March, but exact dates vary from State to State and year to year. More information can be found at:
+http://www.bom.gov.au/climate/averages/tables/daysavtm.shtml
+
+Please note that some Antarctic stations adhere to Daylight Savings and others do not. They also do not always adhere to the 
+Local Standard Time applicable to their longitude.
+
+
+
+
+QUALITY FLAG DESCRIPTIONS
+
+Y: quality controlled and acceptable
+N: not quality controlled
+W: quality controlled and considered wrong
+S: quality controlled and considered suspect
+I: quality controlled and inconsistent with other known information
+
+
+
+
+LATITUDES AND LONGITUDES
+
+Latitudes and longitudes are given to 4 decimal places, but in many cases will not be accurate to 4 decimal places. This is because in the early days 
+the positions of stations were estimated from maps. Gradually the network of open stations is being checked (and if necessary corrected) using 
+GPS (Global Positioning System). The method used is given in the station details file.
+
+
+
+
+WMO INDEX NUMBER
+
+This is the number assigned to a station that makes international weather reports. The number is not actively used in the climate archive, and only a 
+few hundred such numbers are assigned at any time. These are not perpetual but may be reassigned where a station no longer makes the international 
+reports (synops); thus a particular number cannot be regarded as unique and exclusive to any particular station.
+
+
+
+
+PERCENTAGE COMPLETENESS INFORMATION
+
+In some cases the percentage completeness will be overestimated. This will occur if the database has incomplete information about the element being 
+selected. In cases where several elements are selected, rows with a least one of the elements available are considered complete. Where only a limited 
+amount of data is available and the percentage completeness is less than 0.5%, an "*" has been used.
+
+An "*" is also used if the percentage of values with a particular quality flag is non-zero and less than 0.5%.
+
+
+
+
+GAPS AND MISSING DATA
+
+Very few stations have a complete unbroken record of climate information. A station may have been closed, 
+reopened, upgraded to a full weather station or downgraded to a rainfall only station during its existence 
+causing breaks in the record for some or all elements. Some gaps may be for one element due to a damaged 
+instrument or infrastructure outages and others may be for all elements due to the absence or illness of 
+an observer.
+
+
+
+
+INSTRUMENTS AND OBSERVATIONAL PRACTICES
+
+Historically a nearby station (within about 1 to 2 km) may have used the same station number. There may have 
+been changes in instrumentation and/or observing practices over the period included in a dataset, which may 
+have an effect on the long-term record.
+In recent years many stations have had observers replaced by Automatic Weather Stations, either completely 
+or at certain times of the day.
+
+
+
+
+COPYRIGHT
+
+The copyright for any data is held in the Commonwealth of Australia and the purchaser shall give acknowledgement 
+of the source in reference to the data. Please refer to the relevant Agreement and Schedule provided with this data for the terms of use. Further 
+enquiries should be sent to climatedata@bom.gov.au 
+
+
+
+
+LIABILITY
+
+While every effort is made to supply the best data available this may not be possible in all cases. We do not give 
+any warranty, nor accept any liability in relation to the information given, except that liability (if any) that is required by law.
+
+
+
+
+IF DATA IS NOT AS REQUESTED
+
+If the data provided are not as requested, the data will be resupplied at no extra cost, provided that:
+a) the Bureau is notified within 60 days,
+b) the data is returned to the Bureau for checking, and
+c) there has been a fault or error in providing the data.
+
+Where there has been no fault or error of provision, the cost involved in requested corrective action such as resending the data or providing 
+alternative stations will be charged for as necessary.
+
+
+
+
+STATION DETAILS FILE
+
+The Station Details file, identified by 'StnDet' in the file name, contains the details for the stations provided. If the station is now closed, 
+the details are those which applied when the station was closed. Many stations have been moved, downgraded, upgraded etc. over the years.
+
+Byte Location , Byte Size  , Explanation (notes reference number)
+--------------------------------------------------------------------------------------------
+
+
+1-2           ,2           , Record identifier - st
+4-9           ,6           , Bureau of Meteorology Station Number
+11-14         ,4           , Rainfall district code
+16-55         ,40          , Station Name
+57-63         ,7           , Month/Year station opened (MM/YYYY)
+65-71         ,7           , Month/Year station closed if applicable (MM/YYYY)
+73-80         ,8           , Latitude to 4 decimal places, in decimal degrees
+82-90         ,9           , Longitude to 4 decimal places, in decimal degrees
+92-106        ,15          , Method by which latitude/longitude was derived
+108-110       ,3           , State
+112-117       ,6           , Height of station above mean sea level in metres
+119-124       ,6           , Height of barometer above mean sea level in metres
+126-130       ,5           , WMO (World Meteorological Organisation) Index Number
+132-135       ,4           , First year of data supplied in data file
+137-140       ,4           , Last year of data supplied in data file
+142-144       ,3           , Percentage complete between first and last records
+146-148       ,3           , Percentage of values with quality flag 'Y'
+150-152       ,3           , Percentage of values with quality flag 'N'
+154-156       ,3           , Percentage of values with quality flag 'W'
+158-160       ,3           , Percentage of values with quality flag 'S'
+162-164       ,3           , Percentage of values with quality flag 'I'
+166           ,1           , # symbol, end of record indicator
