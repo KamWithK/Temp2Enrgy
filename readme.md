@@ -25,10 +25,10 @@ A large portion of this data will be processed to eliminate any present trends, 
 Yet, not all the provided data from BOM and AEMO are relevant (so many columns are removed).
 
 # Project structure
-This document provides a brief overview of this project and its achievements, however for more detail please look through the relevant notebooks:
-1. [Data cleaning](src/Data.ipynb)
-2. [Visualisation and statistics](src/Graphs%20and%20Stats.ipynb)
-3. [Modelling](src/Modelling.ipynb)
+This document provides a brief overview of this project and its achievements, however for more detail please look through the relevant tutorials:
+1. [Data Cleaning](https://www.kamwithk.com/machine-learning-energy-demand-prediction-project-part-1-data-cleaning)
+2. [Visualisation and Statistics](https://www.kamwithk.com/machine-learning-energy-demand-prediction-project-part-2-storytelling-using-graphs)
+3. [Modelling](https://www.kamwithk.com/machine-learning-energy-demand-prediction-project-part-3-modelling-with-decission-trees)
 
 To run the code, go through each notebook in order.
 
